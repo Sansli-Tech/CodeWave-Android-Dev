@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>MU StudentSync — Annotated Wireframes</title>
+<style>
+  body { font-family: Arial, Helvetica, sans-serif; background:#fff; color:#222; margin:0; padding:32px; }
+  h1 { font-size:22px; margin-bottom:4px; }
+  .sub { color:#666; margin-bottom:32px; }
+  .screen-block { display:flex; gap:28px; margin-bottom:56px; align-items:flex-start; page-break-inside: avoid; }
+  .phone { width:260px; border:2px solid #333; border-radius:18px; padding:14px 12px; background:#fafafa; }
+  .statusbar { display:flex; justify-content:space-between; font-size:10px; color:#999; margin-bottom:8px; }
+  .box { border:1.5px dashed #888; border-radius:4px; padding:8px; margin-bottom:8px; font-size:11px; color:#555; background:#fff; }
+  .box.btn { background:#e9e4ff; border-style:solid; border-color:#6c5ce7; color:#3a2f8f; text-align:center; font-weight:bold; }
+  .box.error { border-color:#c0392b; color:#c0392b; font-size:10px; padding:4px 8px; }
+  .label { font-size:10px; color:#999; margin-bottom:2px; }
+  .notes { flex:1; }
+  .notes h3 { margin:0 0 8px 0; font-size:15px; }
+  .notes ul { margin:0; padding-left:18px; font-size:13px; line-height:1.6; }
+  .tag { display:inline-block; background:#eef; color:#334; border-radius:3px; padding:1px 6px; font-size:10px; margin-right:4px; }
+</style>
+</head>
+<body>
+
+<h1>MU StudentSync — Annotated Wireframes</h1>
+<div class="sub">Activity A evidence · Unit 2 slides 15–20, 30–35 · ICT361</div>
+
+<!-- SCREEN 1: REGISTER -->
+<div class="screen-block">
+  <div class="phone">
+    <div class="statusbar"><span>9:41</span><span>LTE 100%</span></div>
+    <div class="label">Title (headline, bold, 1 focal point)</div>
+    <div class="box">Create Account</div>
+    <div class="box">Full Name</div>
+    <div class="box error">Full name is required</div>
+    <div class="box">Student Number (9 digits) — 0/9</div>
+    <div class="box">Program of Study ▾</div>
+    <div class="box">Student Claim Code</div>
+    <div class="box btn">Register</div>
+    <div class="box" style="text-align:center;border:none;color:#6c5ce7;">Already have an account? Sign in</div>
+  </div>
+  <div class="notes">
+    <h3>1 — Register</h3>
+    <ul>
+      <li><span class="tag">Labelled fields</span> Visible labels stay above each field at all times, not placeholder-only — readable at 200% text scale without disappearing.</li>
+      <li><span class="tag">Useful errors</span> Inline error text sits directly under its field, not in a blocking dialog, so the user can keep typing.</li>
+      <li><span class="tag">Touch targets</span> Every field and the Register button are ≥48dp tall.</li>
+      <li><span class="tag">Preserve input</span> Typed values and shown errors survive screen rotation (state restored in onSaveInstanceState).</li>
+      <li><span class="tag">Back navigation</span> System Back returns to the previous screen predictably; no custom back-trap.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- SCREEN 2: SIGN IN -->
+<div class="screen-block">
+  <div class="phone">
+    <div class="statusbar"><span>9:41</span><span>LTE 100%</span></div>
+    <div class="label">Minimal screen — fewest steps to the goal</div>
+    <div class="box">Sign In</div>
+    <div class="box">Student Number or Email</div>
+    <div class="box">Password  👁</div>
+    <div class="box btn">Sign In</div>
+    <div class="box" style="text-align:center;border:none;color:#6c5ce7;">Don't have an account? Register</div>
+  </div>
+  <div class="notes">
+    <h3>2 — Sign In</h3>
+    <ul>
+      <li><span class="tag">Simplicity</span> Only two inputs — deliberately the lowest-complexity screen in the app, per lab brief.</li>
+      <li><span class="tag">Security UX</span> Generic error ("Incorrect student number or password") avoids confirming which field was wrong, preventing account enumeration.</li>
+      <li><span class="tag">TalkBack</span> Password visibility toggle has a contentDescription announcing its current state.</li>
+      <li><span class="tag">Touch targets</span> 48dp minimum on both fields and the button.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- SCREEN 3: STUDENT PROFILE -->
+<div class="screen-block">
+  <div class="phone">
+    <div class="statusbar"><span>9:41</span><span>LTE 100%</span></div>
+    <div class="label">Toolbar with title — orientation anchor</div>
+    <div class="box">☰  My Group &amp; Profile</div>
+    <div class="box" style="border-style:solid;">Status: <b>Synced</b> ✓</div>
+    <div class="box">Jane Doe<br><span style="color:#999;">Student ID: 001234567 (read-only)</span></div>
+    <div class="box">Program of Study ▾</div>
+    <div class="box">Allocated Group: <b>G02</b><br>Occupancy: 12/15 active</div>
+    <div class="box btn">Request Group Change</div>
+  </div>
+  <div class="notes">
+    <h3>3 — Student Profile / My Group</h3>
+    <ul>
+      <li><span class="tag">Ownership protection</span> Student number is read-only here — matches the brief's rule that only a lecturer can correct it.</li>
+      <li><span class="tag">Sync status</span> A persistent status chip (Saved locally / Pending / Syncing / Synced / Action required) tells the user what state their data is in at a glance.</li>
+      <li><span class="tag">Flexible layout</span> Scrollable column so content reflows correctly at large text sizes instead of clipping.</li>
+      <li><span class="tag">State survival</span> Group-change request state (Pending) persists across rotation and app restart via Room, not just in-memory.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- SCREEN 4: LECTURER ROSTER -->
+<div class="screen-block">
+  <div class="phone">
+    <div class="statusbar"><span>9:41</span><span>LTE 100%</span></div>
+    <div class="label">Search + combined filters above list</div>
+    <div class="box">☰  Student Lab Roster</div>
+    <div class="box">🔍 Search by name or ID</div>
+    <div class="box" style="display:flex;gap:6px;"><span style="flex:1;">Program ▾</span><span style="flex:1;">Group ▾</span></div>
+    <div class="box">Jane Doe — CS<br>G02 &nbsp;✎ 🗑</div>
+    <div class="box">John Banda — IT<br>Unassigned &nbsp;✎ 🗑</div>
+    <div class="box btn" style="width:40px;border-radius:50%;margin-left:auto;">＋</div>
+  </div>
+  <div class="notes">
+    <h3>4 — Lecturer Roster</h3>
+    <ul>
+      <li><span class="tag">Combined filters</span> Search text, Program, and Group filters apply together (AND logic), including an explicit "Unassigned" group option.</li>
+      <li><span class="tag">Confirm destructive actions</span> Delete opens a confirmation dialog before removing a record — cancellable.</li>
+      <li><span class="tag">Empty/offline states</span> Distinct messages for "no results" vs "offline — showing cached results", so the user isn't confused about why the list is empty or incomplete.</li>
+      <li><span class="tag">Touch targets</span> Edit/Delete icon buttons are 48×48dp despite their small visual icon.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- SCREEN 5: STUDENT EDITOR -->
+<div class="screen-block">
+  <div class="phone">
+    <div class="statusbar"><span>9:41</span><span>LTE 100%</span></div>
+    <div class="label">Full-form editor, lecturer-only fields unlocked</div>
+    <div class="box">☰  Edit Student Details</div>
+    <div class="box">Full Name</div>
+    <div class="box">Student Number (9 digits) — editable</div>
+    <div class="box">Program of Study ▾</div>
+    <div class="box">Lab Group ▾ &nbsp;<span style="color:#c0392b;">(FULL – 15/15)</span></div>
+    <div style="display:flex;gap:8px;">
+      <div class="box" style="flex:1;text-align:center;">Cancel</div>
+      <div class="box btn" style="flex:1;">Save</div>
+    </div>
+  </div>
+  <div class="notes">
+    <h3>5 — Student Editor (Lecturer)</h3>
+    <ul>
+      <li><span class="tag">Capacity rule</span> A full group (15/15) is visibly flagged and disables Save for that group — prevents overfilling at the UI layer (server remains the source of truth).</li>
+      <li><span class="tag">Permission boundary</span> Student number is editable here specifically because only a lecturer reaches this screen — contrasts directly with Screen 3 where it's locked.</li>
+      <li><span class="tag">Predictable Back</span> Cancel and system Back both discard changes without saving, consistently.</li>
+    </ul>
+  </div>
+</div>
+
+<p style="color:#999;font-size:12px;margin-top:40px;">
+  Note: these wireframes are intentionally low-fidelity (box-and-label) to support fast iteration
+  and peer review before/alongside implementation, per the lab's Activity A requirement. Pair this
+  document with: (1) written feedback from three classmates completing a task on each screen without
+  coaching, and (2) a short note on at least two changes made as a result of that feedback.
+</p>
+
+</body>
+</html>
