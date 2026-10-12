@@ -1,0 +1,335 @@
+{
+  "info": {
+    "_postman_id": "e97448d3-9217-4780-998a-342f18662716",
+    "name": "MU StudentSync API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "50025987",
+    "_collection_link": "https://go.postman.co/collection/50025987-e97448d3-9217-4780-998a-342f18662716?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Login",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "var data = pm.response.json();\r\nif (data.token) {\r\n    pm.environment.set(\"token\", data.token);\r\n    console.log(\"Token successfully saved!\");\r\n}"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"login_id\": \"lecturer01@mu.example\",\r\n  \"password\": \"ict361ga\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/auth/login",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "auth",
+            "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Registration",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "var data = pm.response.json();\r\nif (data.token) {\r\n    pm.environment.set(\"token\", data.token);\r\n    console.log(\"Student token successfully saved!\");\r\n}"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"student_number\": \"100000001\",\r\n  \"claim_code\": \"CLAIM-0001\",\r\n  \"student_name\": \"Chanda Bwalya\",\r\n  \"programme_code\": \"CS\",\r\n  \"password\": \"ict361cw\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/auth/register",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "auth",
+            "register"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Request Group Change",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"group_code\": \"G01\",\r\n  \"base_version\": 1\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/me/group-request",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "me",
+            "group-request"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create Student",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "c9d6d52d-8839-4d69-a868-9fa42193b2a5"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"student_number\": \"987654321\",\r\n  \"student_name\": \"Alice Banda\",\r\n  \"programme_code\": \"IT\",\r\n  \"group_code\": \"G02\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/students",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "students"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Read Students",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/students",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "students"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Read One Student",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/students/46089aa8-aaa7-4eed-b4c3-2672ec1858be",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "students",
+            "46089aa8-aaa7-4eed-b4c3-2672ec1858be"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update Student",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"student_name\": \"Gregory M Updated\",\r\n  \"programme_code\": \"IT\",\r\n  \"base_version\": 2,\r\n  \"operation_id\": \"7c9e6679-7425-40de-944b-e07fc1f90ae7\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/students/fbba8fb3-93c4-43f7-9a2b-c380e604584b",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "students",
+            "fbba8fb3-93c4-43f7-9a2b-c380e604584b"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete Student",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"operation_id\": \"8f8c5751-2c77-4933-91d4-8d48a32b2123\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/students/49fa1a12-59c1-435f-9cba-fd8a0d6436b0",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "students",
+            "49fa1a12-59c1-435f-9cba-fd8a0d6436b0"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Assign Group",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"group_code\": \"G01\",\r\n  \"base_version\": 1,\r\n  \"operation_id\": \"3b1d7d24-3458-45b5-b7f2-123456789abc\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/students/46089aa8-aaa7-4eed-b4c3-2672ec1858be/group",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "students",
+            "46089aa8-aaa7-4eed-b4c3-2672ec1858be",
+            "group"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Synchronise",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"client_last_sync\": \"2026-10-11T00:00:00.000Z\",\r\n  \"mutations\": [\r\n    {\r\n      \"operation_id\": \"7c9e6679-7425-40de-944b-e07fc1f90ae7\",\r\n      \"entity_type\": \"student\",\r\n      \"entity_id\": \"fbba8fb5-93c4-43f7-9a2b-c380e604584b\",\r\n      \"action\": \"UPDATE\",\r\n      \"payload\": {\r\n        \"student_name\": \"Gregory M Updated\",\r\n        \"programme_code\": \"IT\",\r\n        \"base_version\": 2\r\n      }\r\n    }\r\n  ]\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/sync/changes",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "sync",
+            "changes"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

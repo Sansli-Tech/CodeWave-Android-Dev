@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Sign-In screen: loading state and server-driven errors -->
+    <string name="btn_signing_in">Signing in…</string>
+    <string name="err_login_id_required">Enter your student number or email</string>
+    <string name="err_password_required">Enter your password</string>
+    <string name="err_account_disabled">This account has been disabled. Contact your lecturer.</string>
+    <string name="err_too_many_attempts">Too many attempts. Wait a few minutes and try again.</string>
+    <string name="err_server_unreachable">Couldn\'t reach the server. Check your connection and try again.</string>
+    <string name="err_server_problem">The server had a problem. Try again in a moment.</string>
+</resources>

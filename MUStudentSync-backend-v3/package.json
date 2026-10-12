@@ -1,0 +1,24 @@
+{
+  "name": "studentsync-server",
+  "version": "1.0.0",
+  "private": true,
+  "description": "MU StudentSync REST API (Node.js/Express + MySQL/InnoDB) for ICT361 Activity C",
+  "main": "src/server.js",
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "start": "node src/server.js",
+    "db:init": "node scripts/init_db.js",
+    "seed": "node scripts/seed.js",
+    "test:smoke": "node scripts/smoke_test.js",
+    "test:challenge1": "node scripts/challenge1_last_place.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-rate-limit": "^7.4.0",
+    "helmet": "^7.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.11.0"
+  }
+}

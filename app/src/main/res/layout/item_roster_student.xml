@@ -13,8 +13,12 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp">
+        android:paddingStart="14dp"
+        android:paddingTop="14dp"
+        android:paddingBottom="14dp"
+        android:paddingEnd="4dp">
 
+        <!-- Name and details sit to the left of the 3-dot button -->
         <TextView
             android:id="@+id/tvItemStudentName"
             android:layout_width="0dp"
@@ -23,48 +27,44 @@
             android:textStyle="bold"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/chipItemGroup"
+            app:layout_constraintEnd_toStartOf="@id/btnItemOverflow"
             tools:text="Jane Doe" />
 
         <TextView
             android:id="@+id/tvItemStudentDetails"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="2dp"
             android:textAppearance="?attr/textAppearanceBodySmall"
             android:textColor="?android:attr/textColorSecondary"
             app:layout_constraintTop_toBottomOf="@id/tvItemStudentName"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/btnItemEdit"
-            tools:text="ID: 001234567 • Program: CS" />
+            app:layout_constraintEnd_toStartOf="@id/btnItemOverflow"
+            tools:text="ID: 001234567 • Program: Computer Science" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chipItemGroup"
+            style="@style/Widget.MaterialComponents.Chip.Action"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="10dp"
+            android:clickable="false"
+            android:textSize="12sp"
+            app:chipMinHeight="28dp"
+            app:layout_constraintTop_toBottomOf="@id/tvItemStudentDetails"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             tools:text="G02" />
 
-        <!-- Edit Action Button -->
+        <!-- ONE 3-dot button, centred vertically on the right. 48dp = recommended minimum touch target. -->
         <ImageButton
-            android:id="@+id/btnItemEdit"
+            android:id="@+id/btnItemOverflow"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@android:drawable/ic_menu_edit"
-            android:contentDescription="@string/title_edit_student"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/btnItemDelete" />
-
-        <!-- Delete Action Button -->
-        <ImageButton
-            android:id="@+id/btnItemDelete"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@android:drawable/ic_menu_delete"
-            android:contentDescription="@string/btn_confirm_delete"
+            android:src="@drawable/ic_more_vert_24"
+            android:contentDescription="@string/roster_more_options"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 

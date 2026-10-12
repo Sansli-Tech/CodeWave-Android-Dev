@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <!--
+      DEVELOPMENT ONLY: plain http is allowed for just these two addresses.
+        localhost -> a USB phone that ran:  adb reverse tcp:3000 tcp:3000
+        10.0.2.2  -> the Android emulator's name for your computer
+      The hosted backend must use https, and https needs no entry here.
+    -->
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="false">localhost</domain>
+        <domain includeSubdomains="false">10.0.2.2</domain>
+    </domain-config>
+</network-security-config>

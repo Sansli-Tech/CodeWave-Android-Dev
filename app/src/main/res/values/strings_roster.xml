@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Roster 3-dot menu strings, in their own file so your existing strings.xml is untouched. -->
+<resources>
+    <string name="roster_menu_edit">Edit student</string>
+    <string name="roster_menu_delete">Delete student</string>
+    <string name="roster_more_options">More options</string>
+    <string name="roster_more_options_for">More options for %1$s</string>
+</resources>

@@ -26,7 +26,7 @@ public class RegisterActivity extends AppCompatActivity {
     private TextInputEditText etFullName, etStudentNumber, etClaimCode;
     private AutoCompleteTextView actvProgram;
     private MaterialCardView cardOfflineDraftBanner;
-    private MaterialButton btnRegister, btnGoToSignIn;
+    private MaterialButton btnRegister, btnGoToSignIn, btnRegisterAsLecturer;
 
     private RegisterViewModel viewModel;
 
@@ -78,6 +78,7 @@ public class RegisterActivity extends AppCompatActivity {
         cardOfflineDraftBanner = findViewById(R.id.cardOfflineDraftBanner);
         btnRegister = findViewById(R.id.btnRegister);
         btnGoToSignIn = findViewById(R.id.btnGoToSignIn);
+        btnRegisterAsLecturer = findViewById(R.id.btnRegisterAsLecturer);
     }
 
     private void setupProgramDropdown() {
@@ -94,6 +95,10 @@ public class RegisterActivity extends AppCompatActivity {
         btnRegister.setOnClickListener(v -> validateAndSubmit());
         btnGoToSignIn.setOnClickListener(v -> {
             startActivity(new Intent(this, SignInActivity.class));
+            finish();
+        });
+        btnRegisterAsLecturer.setOnClickListener(v -> {
+            startActivity(new Intent(this, RegisterLecturerActivity.class));
             finish();
         });
     }

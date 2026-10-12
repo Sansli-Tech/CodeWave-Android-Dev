@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Lecturer-registration strings, kept in their OWN file so you never have to
+    edit your existing strings.xml. Every name here is lecturer-specific, so it
+    cannot clash with strings you already have.
+-->
+<resources>
+    <string name="role_lecturer">Lecturer / Faculty</string>
+    <string name="switch_to_student_reg">Register as a Student instead</string>
+    <string name="switch_to_lecturer_reg">Register as a Lecturer instead</string>
+
+    <string name="title_register_lecturer">Create Faculty Account</string>
+    <string name="desc_register_lecturer_subtitle">Register with your staff email and university faculty token</string>
+    <string name="label_lecturer_name">Full Name (with Title)</string>
+    <string name="label_staff_id">Staff ID / Employee Code</string>
+    <string name="label_staff_email">University Staff Email</string>
+    <string name="label_school">School</string>
+    <string name="label_department">Department</string>
+    <string name="label_faculty_auth_token">Faculty Authorization Token</string>
+    <string name="label_lec_password">Password</string>
+    <string name="btn_register_lecturer">Register as Lecturer</string>
+    <string name="link_lec_to_login">Already have an account? Sign in</string>
+    <string name="desc_lec_theme_toggle">Switch between light and dark theme</string>
+    <string name="status_lecturer_draft">Lecturer profile cached locally — pending sync</string>
+
+    <string name="err_lec_name_empty">Full name is required</string>
+    <string name="err_staff_id_empty">Staff ID is required</string>
+    <string name="err_staff_email_invalid">Please enter a valid staff email address</string>
+    <string name="err_school_unselected">Please select your school</string>
+    <string name="err_department_unselected">Please select your department</string>
+    <string name="err_lec_password_empty">Password is required (min 6 characters)</string>
+    <string name="err_faculty_token_invalid">Faculty authorization token is required</string>
+</resources>

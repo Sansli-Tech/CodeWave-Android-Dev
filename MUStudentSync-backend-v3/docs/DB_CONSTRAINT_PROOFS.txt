@@ -1,0 +1,12 @@
+Database constraint proofs - schema v3 - each statement below was REFUSED by MariaDB itself (no application code involved)
+
+  PASS  8-digit student number  ->  ERROR 4025 (23000) at line 1: CONSTRAINT `chk_student_number` failed for `studentsync`.`students`
+  PASS  unknown programme  ->  ERROR 1452 (23000) at line 1: Cannot add or update a child row: a foreign key constraint fails (`stu
+  PASS  unknown lab group  ->  ERROR 1452 (23000) at line 1: Cannot add or update a child row: a foreign key constraint fails (`stu
+  PASS  duplicate student number  ->  ERROR 1062 (23000) at line 1: Duplicate entry '555555557' for key 'uq_students_number'
+  PASS  deleted flag without deleted_at  ->  ERROR 4025 (23000) at line 1: CONSTRAINT `chk_deletion_marker` failed for `studentsync`.`students`
+  PASS  group capacity above 15  ->  ERROR 4025 (23000) at line 1: CONSTRAINT `chk_group_capacity` failed for `studentsync`.`lab_groups`
+  PASS  lecturer: department of wrong school  ->  ERROR 1452 (23000) at line 1: Cannot add or update a child row: a foreign key constraint fails (`stu
+  PASS  student account without a profile  ->  ERROR 4025 (23000) at line 1: CONSTRAINT `chk_account_role` failed for `studentsync`.`accounts`
+  PASS  token use_count above max_uses  ->  ERROR 4025 (23000) at line 1: CONSTRAINT `chk_token_uses` failed for `studentsync`.`faculty_tokens`
+  PASS  session ending before it starts  ->  ERROR 4025 (23000) at line 1: CONSTRAINT `chk_session_time` failed for `studentsync`.`lab_sessions`
